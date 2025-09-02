@@ -1,0 +1,68 @@
+---
+sidebar_position: 1
+---
+# Module 6: Capstone Project - Solving Belgian Business Challenges
+
+**Module Description:** In this hands-on module, you will synthesize the skills learned across the entire curriculum to design, build, and document a comprehensive AI solution that addresses a realistic challenge from a key Belgian industry. This project is your opportunity to build a portfolio piece that demonstrates not only your technical skills but also your understanding of the business, operational, and regulatory context of professional AI engineering in the EU.
+
+**Mandatory Deliverables for All Projects:**
+1.  A functional proof-of-concept of the AI solution.
+2.  A **Business Impact Analysis:** A short document explaining how your solution creates value, referencing the economic context from Part 1.
+3.  A **Regulatory Compliance Statement:** A document assessing your project under the EU AI Act and GDPR, as practiced in Lab 1.5.
+4.  A final presentation and demo of the solution.
+
+---
+
+### Project Brief 1: The Antwerp Port - Intelligent Document Pipeline
+
+- **Business Problem Statement:** The Port of Antwerp-Bruges faces significant overhead from the manual processing of multilingual shipping manifests. This slows down cargo clearance and increases the risk of human error in identifying hazardous materials.
+- **Provided Resources:** A sample dataset of scanned shipping manifests (PDFs) in Dutch, French, and German.
+- **Technical Tasks to Complete:**
+    1.  Use **Azure AI Document Intelligence** to train a custom model to extract key fields (e.g., Shipper, Consignee, Cargo Description, Hazardous Material Code) from the manifests.
+    2.  Use **Azure AI Language** to perform Named Entity Recognition on the extracted "Cargo Description" field.
+    3.  Use **Azure AI Translator** to translate all extracted text into English for a central dashboard.
+    4.  Build a simple web app or Power BI dashboard to display the extracted, translated, and analyzed data.
+- **Success Criteria:** The solution can successfully process a new manifest, extract the required fields, and display them in the dashboard. The system correctly flags documents containing specific hazardous material codes.
+- **Hints & Guidance:** Refer to Module 4 (Document Intelligence) and Module 3 (Language, Translator).
+
+---
+
+### Project Brief 2: The Belfius-Inspired - Compliant Fraud Detector
+
+- **Business Problem Statement:** A Belgian financial institution needs to develop a real-time transaction fraud detection system that is not only accurate but also compliant with stringent EU regulations.
+- **Provided Resources:** A sample dataset of anonymized transaction data (`transactions.csv`). A pre-trained fraud detection model (`model.pkl`).
+- **Technical Tasks to Complete:**
+    1.  Use **Azure Machine Learning** to **register** the provided model in the model registry (Module 5.5).
+    2.  **Deploy** the model to a managed online endpoint.
+    3.  Build a simple client application (e.g., a Python script) that can send sample transaction data to the endpoint and receive a prediction (Fraud/Not Fraud).
+    4.  Implement logging for all prediction requests and responses to meet auditability requirements (Module 1).
+- **Success Criteria:** The model is deployed as a secure, real-time API. The solution correctly logs all transactions for traceability. The mandatory compliance deliverables are thorough and well-reasoned.
+- **Hints & Guidance:** This project focuses heavily on Module 1.5 (EU Compliance) and Module 5.5 (MLOps).
+
+---
+
+### Project Brief 3: The Brussels - Multilingual Citizen Bot
+
+- **Business Problem Statement:** The Brussels-Capital Region administration wants to improve citizen services by providing a 24/7 chatbot that can answer common questions in French, Dutch, and German, reducing the workload on human agents.
+- **Provided Resources:** A set of FAQ web pages from a municipal website.
+- **Technical Tasks to Complete:**
+    1.  Use the **Question Answering** feature of Azure AI Language to create a knowledge base from the provided FAQ pages, ensuring multilingual support is enabled.
+    2.  Deploy the knowledge base and use the "Create a bot" feature to connect it to an **Azure Bot** resource.
+    3.  Use **Azure AI Speech** to add a voice-in/voice-out capability to the bot, allowing users to ask questions by speaking and hear a spoken response.
+    4.  Customize the bot's spoken response using **SSML** to sound more natural.
+- **Success Criteria:** The bot can accurately answer questions from the knowledge base in all three languages. The speech-to-text and text-to-speech functionalities are working correctly.
+- **Hints & Guidance:** Refer to Module 3 (Language, Bots, Speech).
+
+---
+
+### Project Brief 4: The UCB-Inspired - Research Accelerator
+
+- **Business Problem Statement:** A Belgian life sciences company needs to accelerate its R&D by creating a search solution that can understand concepts, not just keywords, within a vast library of internal research papers.
+- **Provided Resources:** A collection of 50+ medical research papers (PDFs) in an Azure Blob Storage container.
+- **Technical Tasks to Complete:**
+    1.  Create an **Azure AI Search** service and use the **Import data** wizard to index the documents from Blob Storage.
+    2.  In the indexer configuration, add an **AI skillset** to enrich the index. At a minimum, this skillset must perform OCR, extract key phrases, and generate a summary for each document.
+    3.  Enable **Semantic Search** on the search service to allow for more conceptual queries.
+    4.  Use the Search explorer to demonstrate the difference between a standard keyword search and a semantic search for a complex query (e.g., "What are the side effects of drugs that target protein X?").
+- **Success Criteria:** The search index is successfully created and enriched. The semantic search query provides a noticeably more relevant result or direct answer than the standard keyword search.
+- **Hints & Guidance:** Refer to Module 4 (Azure AI Search) and its discussion of semantic search.

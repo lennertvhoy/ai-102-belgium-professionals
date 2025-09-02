@@ -1,0 +1,43 @@
+---
+sidebar_position: 1
+---
+# Module 4: Unlocking Insights: Knowledge Mining and Document Intelligence
+
+**Module Description:** Valuable information is often locked away in unstructured documents like PDFs, invoices, and reports. This module teaches you how to use Azure AI Document Intelligence and Azure AI Search to build solutions that automatically extract and surface this critical information, transforming dormant data into a strategic, searchable asset for any Belgian enterprise.
+
+**Learning Objectives:**
+- Differentiate between pre-built and custom models in Azure AI Document Intelligence and know when to use each.
+- Use the Document Intelligence Studio to extract structured data from documents like invoices.
+- Create and enrich an Azure AI Search index to make a repository of documents searchable.
+- Understand the concepts of semantic search and vector search for more intelligent and context-aware querying.
+
+**Key Topics Covered (AI-102 Alignment):**
+- **Implement Azure AI Document Intelligence solutions:** Using pre-built models and training custom extraction models.
+- **Implement Azure AI Search solutions:** Creating an index, defining data sources, and running queries.
+- Understanding semantic and vector search capabilities.
+
+---
+
+### 4.1 Automated Data Extraction: Azure AI Document Intelligence
+
+Manually entering data from documents is a major operational bottleneck. The Volvo case, where invoice processing was automated to save thousands of hours, is a prime example of the solution. Azure AI Document Intelligence is the service that powers this capability.
+
+- **Pre-built Models:** For common document types, Document Intelligence provides ready-to-use models. The **Invoice Model**, for example, is pre-trained to recognize and extract standard fields like `InvoiceId`, `CustomerName`, `Total`, and line items. Other pre-built models exist for receipts, business cards, and more.
+
+- **Custom Models:** When you have a unique document layout not covered by a pre-built model (e.g., a specific type of customs declaration used at the Port of Antwerp), you can train a custom model. You provide a small set of labeled examples, and the service learns to extract the key-value pairs and tables specific to your document.
+
+> [Asset Suggestion: A visual flow chart. Path 1 shows a standard invoice going to the "Pre-built Invoice Model" and outputting structured data. Path 2 shows a unique, company-specific form going to a "Custom Training Process" which creates a "Custom Model" that then outputs structured data.]
+
+### 4.2 Creating a Searchable Knowledge Base: Azure AI Search
+
+Once data is extracted, or if you have a large repository of existing documents, you need a way to find information within it. Azure AI Search is a fully managed search-as-a-service that allows you to build powerful search experiences.
+
+- **Indexing:** The core of Azure AI Search is the index. You define a schema of fields you want to be searchable, and then you ingest your data into the index from a data source (like Azure Blob Storage or Azure SQL).
+- **Enrichment with AI Skillsets:** During indexing, you can attach an AI "skillset" to enrich the data. For example, you can use skills to perform OCR on scanned PDFs, extract key phrases, or translate text before it enters the index.
+
+### 4.3 The Next Generation of Search: Semantic and Vector
+
+Traditional keyword search is good, but modern search is evolving to understand intent and context. This is particularly critical for a use case like UCB Pharma's, where researchers need to find concepts, not just keywords, in scientific papers.
+
+- **Semantic Search:** A feature of Azure AI Search that uses advanced language models to understand the contextual meaning of a query. It can re-rank results based on semantic relevance, not just keyword frequency, and can even provide direct answers to questions.
+- **Vector Search:** This new generation of search works by converting text and other data into numerical representations (vectors). It finds results that are "semantically similar" or close in meaning, even if they don't share any keywords. This is the technology that powers searching by concept or image similarity and is a key component of the Retrieval-Augmented Generation (RAG) pattern used with large language models.

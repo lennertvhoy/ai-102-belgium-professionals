@@ -1,0 +1,50 @@
+---
+sidebar_position: 1
+---
+# Module 3: Mastering Language and Conversation: NLP for a Multilingual Market
+
+**Module Description:** In a trilingual country at the heart of a multilingual continent, Natural Language Processing (NLP) is a strategic capability. This module provides a granular, hands-on breakdown of the language solutions on Azure. You will learn to use distinct services for text analysis, translation, bot building, and speech processing. These skills enable you to break down language barriers and automate communication, providing a significant advantage in the Belgian and European markets.
+
+**Learning Objectives:**
+- Use the Azure AI Language service to perform sentiment analysis, named entity recognition (NER), key phrase extraction, and PII detection.
+- Build a basic conversational AI solution using Azure Bot Framework and the question answering capability of Azure AI Language.
+- Implement real-time speech-to-text and text-to-speech using the Azure AI Speech service, including customization with SSML.
+- Use the Azure AI Translator service for text translation.
+
+**Key Topics Covered (AI-102 Alignment):**
+- **Analyze text:** Sentiment analysis, entity recognition (general and PII), key phrase extraction.
+- **Implement question answering:** Building and using a knowledge base.
+- **Build a conversational bot:** Using Bot Framework to integrate language understanding components.
+- **Implement speech-to-text and text-to-speech:** Using the Azure AI Speech SDK.
+- **Translate text:** Using the Azure AI Translator service.
+
+---
+
+### 3.1 Extracting Insights: The Azure AI Language Service
+
+Unstructured text is a vast source of data. The Azure AI Language service provides pre-trained models to extract specific insights without requiring you to be a data scientist.
+
+- **Sentiment Analysis:** Gauges the emotional tone of a text (positive, neutral, negative). Essential for analyzing customer feedback for a company like AG Insurance.
+- **Named Entity Recognition (NER):** Identifies and categorizes entities like people, places, organizations, and dates.
+- **Personally Identifiable Information (PII) Detection:** A crucial feature for GDPR compliance, this automatically finds and redacts sensitive information like passport numbers or phone numbers from a block of text.
+
+### 3.2 Breaking Barriers: The Azure AI Translator Service
+
+For a market like Belgium, translation is a daily requirement. The Translator service provides rapid, high-quality machine translation via a simple API call, supporting Dutch, French, German, and many other languages.
+
+> [Asset Suggestion: A diagram showing a pipeline: A customer review in French enters, is processed by the Language service for sentiment, and then by the Translator service to output an English version for an analytics dashboard.]
+
+### 3.3 Building Bots: Conversational AI on Azure
+
+Modern chatbots are more than just scripted responses. The Eneco Belgium case, where a bot handles 24,000 chats per month, proves the power of this technology. The core components on Azure are:
+
+- **Azure AI Language - Question Answering:** Allows you to create a knowledge base from existing documents (like an FAQ page). The service can then find the best answer to a user's question in natural language.
+- **Azure Bot Framework:** The foundation for building bots. It provides the scaffolding to handle conversations, connect to different channels (like a website or Microsoft Teams), and integrate with your knowledge base.
+
+### 3.4 The Power of Voice: The Azure AI Speech Service
+
+Voice is an increasingly important interface for applications. The Azure AI Speech service provides a comprehensive suite of capabilities.
+
+- **Speech-to-Text:** Transcribes audio streams into text in real-time or from files. It supports multiple languages and can be customized for specific vocabularies.
+- **Text-to-Speech:** Converts text into natural-sounding synthesized speech. You can choose from a variety of voices and languages.
+- **Speech Synthesis Markup Language (SSML):** This XML-based language gives you fine-grained control over the generated speech, allowing you to adjust pronunciation, pitch, rate, and pauses to make the voice sound more natural and expressive.

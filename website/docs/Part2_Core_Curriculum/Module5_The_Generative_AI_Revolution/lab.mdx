@@ -1,0 +1,67 @@
+---
+sidebar_position: 2
+---
+# Lab 5: Hands-On with Generative AI Engineering
+
+**Objective:** This lab provides practical exercises in the engineering techniques required to get high-quality, relevant results from large language models. You will practice prompt engineering and analyze the architecture for connecting models to your own data.
+
+**Prerequisites:**
+- Access to an Azure subscription.
+- An Azure OpenAI resource with a model (e.g., GPT-3.5-Turbo or GPT-4) deployed.
+
+---
+
+### Task 1: The Art of Prompt Engineering
+
+**Scenario:** You are building a chatbot for a Belgian tourism website. You need to ensure the model's responses are helpful, concise, and contextually appropriate.
+
+**Instructions:**
+1.  Navigate to your Azure OpenAI resource in the Azure portal and open the **Azure OpenAI Studio**.
+2.  Go to the **Chat** playground.
+
+**Attempt 1: The Basic Prompt**
+- In the user message box, type: `"Tell me about Brussels."`
+- Observe the response. It will likely be a long, generic, encyclopedia-style article.
+
+**Attempt 2: Adding Role-Play and Constraints**
+- Clear the chat. Now, in the **System message** box on the left, define a role and constraints for the model:
+  `"You are a friendly and enthusiastic tour guide for a Belgian tourism website. Your goal is to get visitors excited to come to Brussels. Your answers should be concise, limited to 3-4 sentences, and always end with a question to encourage engagement."`
+- Now, in the user message box, type the same prompt: `"Tell me about Brussels."`
+- Compare the response to Attempt 1. It should be much more engaging and aligned with your requirements.
+
+**Attempt 3: Few-Shot Prompting**
+- Clear the chat. Now, you will provide examples to show the model exactly what you want. In the chat session, add the following turns:
+  - **User:** `"Tell me about Bruges."`
+  - **Assistant:** `"Bruges is a fairytale medieval city, famous for its canals, cobblestone streets, and historic architecture! It's often called the 'Venice of the North.' Have you ever been on a canal tour?"`
+- Now, enter your prompt: `"Tell me about Brussels."`
+- The model should now follow the pattern you provided, giving a similarly structured and toned response for Brussels.
+
+> [Asset Suggestion: A screenshot of the Azure OpenAI Studio Chat Playground, showing the System Message, the few-shot examples, and the final, high-quality response from the model.]
+
+**Success Criterion:** You have successfully used prompt engineering techniques (role-playing, constraints, and few-shot examples) to control the tone, style, and content of an LLM's response.
+
+---
+
+### Task 2: Understanding the RAG Architecture
+
+**Scenario:** The tourism chatbot from Task 1 needs to be able to answer questions about specific, up-to-the-minute events, like the schedule for the "Winter Wonders" Christmas market in Brussels. This information is not in the model's training data.
+
+**Instructions:**
+This is a conceptual exercise. Your task is to draw or write out the architectural steps required to solve this problem using the Retrieval-Augmented Generation (RAG) pattern, based on the `README.md`.
+
+1.  **The User's Question:**
+    - `"What time does the Winter Wonders ice rink open tomorrow?"`
+
+2.  **Step 1: The Retrieval Phase**
+    - Where does the user's question go first? (Hint: Not to the LLM).
+    - What service would you use to store and search the event schedules? (Hint: We learned about it in Module 4).
+    - What does this service return?
+
+3.  **Step 2: The Augmentation (Prompting) Phase**
+    - How do you combine the retrieved information with the user's original question to create a new, better prompt for the LLM?
+    - Write out what the final prompt to the Azure OpenAI model would look like.
+
+4.  **Step 3: The Generation Phase**
+    - The LLM receives the augmented prompt and generates the final answer.
+
+**Success Criterion:** You can accurately describe the three stages of the RAG pattern (Retrieve, Augment, Generate) and can explain why this pattern is essential for answering questions on custom, private, or time-sensitive data.

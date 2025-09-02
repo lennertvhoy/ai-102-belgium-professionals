@@ -1,0 +1,71 @@
+---
+sidebar_position: 2
+---
+# Lab 3: Hands-On with Language and Conversation AI
+
+**Objective:** In this lab, you will use the various Azure AI services for language to solve practical problems. The three tasks will guide you through analyzing multilingual text, building a simple FAQ bot, and converting between speech and text.
+
+**Prerequisites:**
+- Access to an Azure subscription.
+- An Azure AI Language resource and an Azure AI Speech resource created in your subscription.
+
+---
+
+### Task 1: Analyze Multilingual Customer Feedback
+
+**Scenario:** A Belgian e-commerce company receives product reviews in both French and Dutch. They want to automatically analyze the sentiment of these reviews and detect any personal information before translating them to English for their central analytics team.
+
+**Instructions:**
+1.  Navigate to your Azure AI Language resource in the Azure portal and open the **Language Studio**.
+2.  Under the **Classify Text** tab, select **Analyze sentiment and mine opinions**.
+3.  Paste in the following French review: `"J'ai commandé un pull qui est arrivé avec un trou. Le service client était lent et inutile. Très déçu."`
+4.  Ensure the language is set to French and run the analysis. Observe the negative sentiment result.
+5.  Now, select the **Extract Information** tab and choose **Personally Identifiable Information (PII)**.
+6.  Paste in the following Dutch text: `"Mijn bestelnummer is 12345 en mijn e-mail is jan.peeters@example.com. Kunt u mij helpen?"`
+7.  Run the analysis. Note how the service correctly identifies the email address as PII.
+8.  Finally, navigate to the **Translate Text** tab. Paste the Dutch text again, set the source language to Dutch and the target language to English, and run the translation.
+
+> [Asset Suggestion: A screenshot of the Language Studio showing the PII detection feature redacting the email address from the Dutch text.]
+
+**Success Criterion:** You have used the Language Studio to perform sentiment analysis, PII detection, and translation on multilingual text.
+
+---
+
+### Task 2: Build a Basic Multilingual FAQ Bot
+
+**Scenario:** A municipality in Brussels wants a simple chatbot for their website that can answer common citizen questions (e.g., "What are the opening hours of the town hall?") in both French and Dutch.
+
+**Instructions:**
+1.  In the Language Studio, under the **Understand questions and conversational language** tab, select **Question answering**.
+2.  Select **Add project** and create a new project. When prompted for a data source, choose "I want to add a knowledge base from a URL" and add a new source with the URL of a simple FAQ page (you can use a sample or create a simple one yourself).
+3.  Enable the **multi-turn conversation** feature and select both French and Dutch from the language dropdown.
+4.  Create the project. Once the knowledge base is imported, click on **Deploy knowledge base**.
+5.  After deployment, select **Create a bot**. This will guide you through the process in the Azure portal to create an Azure Bot resource that is automatically connected to your new knowledge base.
+6.  Once the bot is created, you can test it in the **Test in Web Chat** panel in the Azure portal, asking questions in both languages.
+
+**Success Criterion:** You have created a knowledge base and deployed a simple bot that can answer questions from that knowledge base in multiple languages.
+
+---
+
+### Task 3: Use Speech-to-Text and Text-to-Speech
+
+**Scenario:** You are prototyping a voice assistant for a Belgian railway company. The assistant needs to be able to understand a spoken customer query and respond with a natural-sounding voice.
+
+**Instructions:**
+1.  Navigate to your Azure AI Speech resource in the Azure portal and open the **Speech Studio**.
+2.  Go to the **Real-time Speech-to-text** tool. Using your microphone, speak the following sentence in English: `"When is the next train to Ghent?"` Observe how the service transcribes your speech to text in real-time.
+3.  Now, go to the **Audio Content Creation** tool for Text-to-Speech.
+4.  Select a **Neural voice** and choose a language (e.g., English (United States), `en-US-JennyNeural`).
+5.  In the text box, enter the following text using **Speech Synthesis Markup Language (SSML)** to control the output:
+    ```xml
+    <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+        <voice name="en-US-JennyNeural">
+            The next train to Ghent departs at <say-as interpret-as="time">5:30 PM</say-as> from platform <say-as interpret-as="cardinal">3</say-as>.
+            <break time="500ms" />
+            Have a pleasant journey!
+        </voice>
+    </speak>
+    ```
+6.  Click **Play** to hear the synthesized audio. Note the natural phrasing of the time and platform number, and the slight pause you added with the `<break>` tag.
+
+**Success Criterion:** You have used the Speech Studio to convert spoken language to text and to create customized, natural-sounding speech from text using SSML.

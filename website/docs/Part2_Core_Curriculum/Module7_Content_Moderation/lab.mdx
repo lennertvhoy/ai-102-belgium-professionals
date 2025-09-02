@@ -1,0 +1,78 @@
+---
+sidebar_position: 2
+---
+# Lab 7: Hands-On with Content Moderation
+
+**Objective:** In this lab, you will use the Azure AI Content Safety Studio to explore how to detect harmful text and images. You will learn to interpret the severity scores and think about how to build a moderation policy.
+
+**Prerequisites:**
+- Access to an Azure subscription.
+- An Azure AI Content Safety resource created in your subscription.
+
+---
+
+### Task 1: Moderate Harmful Text
+
+**Scenario:** You are building a web chat application and you want to prevent users from posting hateful or violent comments.
+
+**Instructions:**
+1.  Navigate to your **Azure AI Content Safety** resource in the Azure portal and launch the **Content Safety Studio**.
+2.  On the left, select the **Moderate text content** tool.
+3.  **Test Case 1 (Obvious Harm):**
+    -   In the text box, type a clearly hateful and violent sentence. For example: `"I want to attack and kill those people."`
+    -   Click **Run test**. 
+    -   Observe the results. You should see high severity scores for both the **Hate** and **Violence** categories.
+4.  **Test Case 2 (Subtle Harm):**
+    -   Clear the text box. Now, type something more subtle. For example: `"People from that group are all terrible and shouldn't be trusted."`
+    -   Run the test again.
+    -   Observe the results. The **Hate** score might be lower than in the first test case, but it should still be elevated, indicating a potential policy violation.
+5.  **Test Case 3 (Safe Text):**
+    -   Type a normal, safe sentence like `"I love visiting the beautiful parks in Brussels."`
+    -   Run the test and observe that all severity scores are very low.
+
+> [Asset Suggestion: A screenshot of the Content Safety Studio showing the results for Test Case 1, with the high severity scores for Hate and Violence clearly visible.]
+
+**Success Criterion:** You have used the studio to see how the service assigns different severity scores to text with varying levels of harmful content.
+
+---
+
+### Task 2: Moderate Harmful Images
+
+**Scenario:** You are managing a social media platform where users can upload profile pictures. You need to prevent users from uploading violent or inappropriate images.
+
+**Instructions:**
+1.  In the Content Safety Studio, select the **Moderate image content** tool.
+2.  The studio provides several sample images for testing.
+3.  **Test Case 1:** Select one of the sample images that depicts violence or is otherwise inappropriate.
+4.  Click **Run test** and observe the high severity scores returned for the relevant categories.
+5.  **Test Case 2:** Select a safe sample image (e.g., a picture of a landscape or an animal).
+6.  Run the test and observe the low severity scores.
+
+**Success Criterion:** You have used the studio to see how the service assigns severity scores to images.
+
+---
+
+### Task 3: Define a Moderation Policy (Conceptual)
+
+**Scenario:** The social media platform from Task 2 needs a formal content policy. Based on your tests, you need to define the rules for what to do with flagged content.
+
+**Instructions:**
+This is a written exercise. Based on the severity scores from 0 (safe) to 7 (highly unsafe), write a simple, three-tiered moderation policy for your platform's user-uploaded images. Your policy should define the action to take for each tier.
+
+**Example Policy Structure:**
+
+-   **Tier 1: Automatically Allow**
+    -   *Severity Score Range:* ?
+    -   *Action:* The image is immediately visible on the user's profile.
+
+-   **Tier 2: Flag for Human Review**
+    -   *Severity Score Range:* ?
+    -   *Action:* The image is hidden from public view and added to a queue for a human moderator to review.
+
+-   **Tier 3: Automatically Block & Escalate**
+    -   *Severity Score Range:* ?
+    -   *Action:* The image is rejected, the user is notified of the violation, and a record is kept for potential account action.
+
+Fill in the `?` with the severity score ranges you think are appropriate for each tier based on your observations in the lab.
+
+**Success Criterion:** You have created a clear, tiered content moderation policy based on the concept of severity scores, demonstrating your understanding of how to apply the tool's output in a real-world application.

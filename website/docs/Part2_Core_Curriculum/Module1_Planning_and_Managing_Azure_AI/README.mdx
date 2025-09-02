@@ -1,0 +1,56 @@
+---
+sidebar_position: 1
+---
+# Module 1: Planning and Managing an Azure AI Solution
+
+**Module Description:** This module provides the essential engineering practices required to professionally manage AI solutions on Azure. Moving beyond development, you will learn the core, testable skills for governing costs, securing resources, and monitoring services—competencies that constitute 20-25% of the AI-102 exam. This is the foundation for building enterprise-grade AI systems that are not only powerful but also secure, reliable, and economically viable.
+
+**Learning Objectives:**
+- Plan and implement robust security for Azure AI services, including the management of keys, secrets, and credentials using Azure Key Vault.
+- Develop and execute a comprehensive cost management strategy for AI solutions, including setting budgets and creating cost alerts.
+- Configure and interpret diagnostic logging and monitoring for Azure AI services to ensure performance, reliability, and traceability.
+- Differentiate between various Azure AI services and select the appropriate service for a given business problem.
+
+**Key Topics Covered (AI-102 Alignment):**
+- **Plan and manage Azure AI services:**
+  - Selecting the appropriate Azure AI service
+  - Planning and configuring security for Azure AI services
+  - Managing API keys and secrets with Azure Key Vault
+  - Planning and managing costs (budgets, alerts)
+- **Monitor and optimize Azure AI solutions:**
+  - Configuring diagnostic logging for Azure AI services
+  - Creating alerts and using metrics to monitor services
+
+---
+
+### 1.1 The Engineering Discipline of Managing AI
+
+An AI solution is more than a model; it is a production service that requires the same engineering rigor as any other software system. In the Belgian context, where organizations like Belfius Bank operate in highly regulated environments, the ability to prove security, control costs, and monitor for issues is not optional—it is a core business requirement. This module provides the practical skills to meet these demands.
+
+> [Asset Suggestion: A diagram illustrating the "AI Solution Lifecycle," showing a loop from Planning -> Development -> **Security & Cost Management** -> **Monitoring** -> Optimization.]
+
+### 1.2 Practical Cost Management for AI
+
+Azure AI services are powerful but can incur significant costs if not managed properly. For a Belgian SME, controlling operational expenses is critical. You will learn to move beyond simple cost estimation to active cost governance.
+
+**Key Skills:**
+- **Creating Budgets:** Set a financial threshold for your AI resources in Azure Cost Management.
+- **Configuring Alerts:** Create automated alerts that notify you when spending approaches or exceeds your budget, preventing costly surprises.
+
+### 1.3 Securing AI Services with Azure Key Vault
+
+A common failure point in AI solutions is the improper handling of credentials like API keys. A hardcoded key in a source file can lead to a major security breach. The professional standard is to externalize these secrets using a secure vault.
+
+**Key Skills:**
+- **Provisioning Azure Key Vault:** Create a centralized, secure repository for all secrets.
+- **Storing and Retrieving Secrets:** Learn how to store API keys and connection strings in Key Vault and how your application code can securely retrieve them at runtime, a non-negotiable practice for any project touching sensitive data, such as UCB's pharmaceutical research.
+
+### 1.4 Monitoring for Reliability and Performance
+
+If an AI service fails, how do you know? How do you diagnose the problem? Effective monitoring is the answer. For a logistics hub like the Port of Antwerp-Bruges, where AI systems might be tracking container data in real-time, a service outage can have immediate physical consequences.
+
+**Key Skills:**
+- **Configuring Diagnostic Logging:** Enable logging for your Azure AI services to capture detailed operational data.
+- **Analyzing Logs:** Route logs to a Log Analytics workspace and run basic queries to troubleshoot issues, monitor performance, and track usage patterns.
+
+This module provides the foundational engineering skills to ensure your AI solutions are managed professionally, preparing you for a significant portion of the AI-102 exam and for the realities of building production AI systems in a demanding market.

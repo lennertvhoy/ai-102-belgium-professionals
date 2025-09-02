@@ -1,0 +1,50 @@
+---
+sidebar_position: 1
+---
+# Module 5.5: Operationalizing AI Solutions with MLOps
+
+**Module Description:** An AI model is only valuable when it is reliably running in production. This module introduces the essential engineering discipline of Machine Learning Operations (MLOps), which provides the framework for managing the full lifecycle of an AI solution. You will learn how to move beyond notebooks and experiments to build robust, automated, and maintainable AI systems using Azure Machine Learning and CI/CD pipelines.
+
+**Learning Objectives:**
+- Understand the MLOps lifecycle and its importance for professional AI engineering.
+- Use Azure Machine Learning to register and version-control trained models.
+- Deploy a model as a managed online endpoint for real-time inference.
+- Understand how CI/CD pipelines (e.g., GitHub Actions) can be used to automate the training and deployment of AI models.
+
+**Key Topics Covered (AI-102 Alignment):**
+- This module provides a practical, hands-on application of the "Plan and Manage" and "Monitoring" domains, extending them into a complete operational lifecycle.
+
+---
+
+### 5.5.1 From Experiment to Production: The Need for MLOps
+
+Many AI projects fail after the modeling phase because they lack a path to production. MLOps is the set of practices that fuses Machine Learning, DevOps, and Data Engineering to bridge this gap. It provides a structured process to deploy, monitor, manage, and retrain models, ensuring they deliver sustained business value.
+
+**The MLOps Lifecycle:**
+1.  **Data Management:** Sourcing, versioning, and preparing data.
+2.  **Model Training & Versioning:** Training a model and registering it as a versioned, auditable asset.
+3.  **Model Deployment:** Packaging the model and deploying it as an API endpoint for consumption.
+4.  **Monitoring:** Tracking the model's technical performance (e.g., latency) and its prediction quality (e.g., accuracy, model drift).
+5.  **Retraining:** Automatically triggering a retraining pipeline when data changes or model performance degrades.
+
+> [Asset Suggestion: A clear, circular diagram illustrating the MLOps lifecycle, with icons for each stage: Data -> Train -> Register -> Deploy -> Monitor -> (back to) Data.]
+
+### 5.5.2 Azure Machine Learning: The Hub for MLOps
+
+Azure Machine Learning (Azure ML) is the central service on Azure for implementing the MLOps lifecycle. It is a comprehensive platform that provides tools for every stage of the process.
+
+- **Model Registry:** A key feature of Azure ML is the model registry. Instead of saving model files (`.pkl`, `.onnx`) to a file share, you register them in the registry. Each registered model gets a name and a version number, creating a clear lineage of which model is running where.
+- **Endpoints:** Once a model is in the registry, you can deploy it as an endpoint. Azure ML provides **Managed Online Endpoints**, which are fully managed, scalable HTTPS endpoints that your applications can call to get real-time predictions.
+
+### 5.5.3 Automation with CI/CD Pipelines
+
+The ultimate goal of MLOps is automation. Just as DevOps uses CI/CD (Continuous Integration/Continuous Deployment) to automate software builds and releases, MLOps uses CI/CD to automate the AI lifecycle.
+
+- **What is a CI/CD Pipeline for AI?** It is an automated workflow, typically defined in a YAML file using a tool like **GitHub Actions** or **Azure DevOps**. This pipeline can automatically:
+    1.  Trigger when new data is available or code is changed.
+    2.  Run a training script to produce a new model.
+    3.  Evaluate the new model against performance thresholds.
+    4.  If the new model is better, register it as a new version in the Azure ML registry.
+    5.  Deploy the new model version to a staging or production endpoint.
+
+This automated process ensures that your AI solutions are always up-to-date, rigorously tested, and deployed in a safe, repeatable manner. This is the standard for professional AI engineering.

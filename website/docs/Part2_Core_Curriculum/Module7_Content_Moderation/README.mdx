@@ -1,0 +1,55 @@
+---
+sidebar_position: 1
+---
+# Module 7: Implementing Content Moderation
+
+**Module Description:** In an era where many applications are powered by user-generated content, protecting your users and your brand from harmful material is a critical, non-negotiable responsibility. This module addresses a critical gap and AI-102 exam domain: content moderation. You will learn how to use the Azure AI Content Safety service to detect and filter harmful text and images, enabling you to build safer and more trustworthy online environments.
+
+**Learning Objectives:**
+- Understand the major categories of harmful content and the importance of content moderation.
+- Use the Azure AI Content Safety service to detect potentially harmful text and images.
+- Interpret the severity scores provided by the service to implement nuanced, policy-based moderation rules.
+- Understand how to integrate content moderation into an AI application workflow.
+
+**Key Topics Covered (AI-102 Alignment):**
+- **Implement Content Moderation Solutions:** This module directly and comprehensively covers this official AI-102 exam domain.
+
+---
+
+### 7.1 The Imperative of Content Safety
+
+Any application that allows users to upload text or images—from social media comments and product reviews to chatbot inputs—is vulnerable to abuse. Harmful content can damage your brand reputation, create negative user experiences, and in some cases, lead to legal liability. Proactively moderating this content is a core tenet of Responsible AI.
+
+Azure AI Content Safety is a dedicated service designed to detect and flag potentially harmful material, acting as a powerful filter for your applications.
+
+### 7.2 Categories of Harmful Content
+
+The service uses advanced machine learning models to classify content into four primary categories:
+
+- **Hate:** Content that expresses pejorative or discriminatory language towards individuals or groups based on attributes like race, religion, gender, or sexual orientation.
+- **Sexual:** Content that includes language or imagery related to human anatomical organs, sexual activities, or erotic intent.
+- **Violence:** Content that depicts or glorifies acts of violence, death, or gore.
+- **Self-Harm:** Content that encourages or provides instructions on how to self-harm or commit suicide.
+
+> [Asset Suggestion: A set of four simple icons, one for each content category: a broken heart for Hate, an eye with a slash through it for Sexual, an explosion for Violence, and a helping hand for Self-Harm.]
+
+### 7.3 Beyond Block/Allow: Using Severity Scores
+
+Content moderation is rarely a simple yes/no decision. Azure AI Content Safety provides a more nuanced system by returning a **severity score** for each category, ranging from 0 (safe) to 7 (highly unsafe).
+
+This scoring system allows you to implement a flexible, policy-based moderation strategy. For example, you could decide to:
+
+- **Automatically Block:** Any content with a severity score of 5 or higher in any category.
+- **Flag for Human Review:** Content with a score between 2 and 4.
+- **Automatically Allow:** Content with a score of 0 or 1.
+
+This gives you granular control, allowing you to tailor your moderation policy to your application's specific risk tolerance and community standards.
+
+### 7.4 Moderating Text and Images
+
+The Content Safety service provides capabilities for both major types of user-generated content:
+
+- **Text Moderation:** The API can analyze a block of text—from a short comment to a long document—and return severity scores for each of the four categories.
+- **Image Moderation:** The service can analyze an image and, similarly, return severity scores for each category, allowing you to detect and filter inappropriate visual content.
+
+By integrating Azure AI Content Safety into your application pipeline, you can build a critical layer of defense against harmful content, creating a safer experience for all users.

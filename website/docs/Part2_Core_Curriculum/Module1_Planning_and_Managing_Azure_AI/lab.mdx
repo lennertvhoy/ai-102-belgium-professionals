@@ -1,0 +1,70 @@
+---
+sidebar_position: 2
+---
+# Lab 1: Essential Management Practices for Azure AI Solutions
+
+**Objective:** In this lab, you will implement the core governance and monitoring practices required to manage an enterprise-grade AI solution in a professional context. You will perform three distinct tasks, each framed within a realistic Belgian business scenario.
+
+**Prerequisites:**
+- Access to an Azure subscription.
+- You should have an Azure AI service (like Azure AI Language or Vision) created in your resource group to act as the target for these exercises.
+
+---
+
+### Task 1: Implement Cost Governance for a Public Sector Project
+
+**Scenario:** Your team at a Belgian public sector agency is piloting a new Azure AI service to analyze citizen feedback. To ensure the pilot stays within its limited budget, you must implement cost controls.
+
+**Instructions:**
+1.  Navigate to the **Cost Management + Billing** service in the Azure portal.
+2.  Select **Budgets** from the navigation menu.
+3.  Create a new **Budget** for your resource group.
+    -   **Name:** `ai-pilot-budget`
+    -   **Budget Period:** Monthly
+    -   **Budget Amount:** `100` EUR (or a similar small amount).
+4.  Proceed to the **Alert conditions** screen.
+5.  Configure an **Alert** to be triggered when the actual spend reaches **80%** of the budget.
+6.  Enter your email address as the recipient for the alert.
+7.  Create the budget.
+
+> [Asset Suggestion: A GIF showing the process of creating a budget and setting an alert in the Azure portal.]
+
+**Success Criterion:** You have successfully created a budget with a corresponding email alert to proactively manage the costs of your AI pilot project.
+
+---
+
+### Task 2: Secure AI Service Keys with Azure Key Vault
+
+**Scenario:** A fintech startup in Brussels is building a new fraud detection service using Azure AI. To comply with financial regulations, all credentials, including the AI service API key, must be stored securely and not in the application code.
+
+**Instructions:**
+1.  In the Azure portal, create a new **Azure Key Vault** resource.
+2.  Once the Key Vault is provisioned, navigate to the **Secrets** section.
+3.  Generate a new secret by clicking **Generate/Import**.
+    -   **Name:** `fraud-detection-api-key`
+    -   **Value:** Go to your Azure AI service, copy one of its API keys, and paste it here.
+4.  Create the secret.
+5.  (Discussion) How would your application code retrieve this secret? You would typically use a Managed Identity for your application and grant it `get` permissions on secrets in the Key Vault's Access Policy. The application SDK (e.g., `SecretClient` for .NET/Python) would then be used to fetch the secret by its name.
+
+> [Asset Suggestion: A diagram showing an Azure Function App with a Managed Identity retrieving a secret from Azure Key Vault to then access an Azure AI Service. This illustrates the secure access pattern.]
+
+**Success Criterion:** The API key for the AI service is now securely stored as a secret in Azure Key Vault, ready to be accessed by authorized applications without being hardcoded.
+
+---
+
+### Task 3: Configure Monitoring for a Mission-Critical Logistics AI
+
+**Scenario:** A logistics company at the Port of Antwerp-Bruges uses an Azure AI Vision service to detect damage on shipping containers. Any downtime or performance degradation of this service can cause significant delays. You must configure monitoring to ensure reliability.
+
+**Instructions:**
+1.  First, create a **Log Analytics Workspace** in Azure if you don't already have one. This is the destination for your logs.
+2.  Navigate to your Azure AI Vision service in the Azure portal.
+3.  In the left-hand menu, under the **Monitoring** section, select **Diagnostic settings**.
+4.  Click **Add diagnostic setting**.
+5.  Give the setting a name, such as `ai-vision-monitoring`.
+6.  Select the logs and metrics you want to capture. At a minimum, select `allLogs` and `AllMetrics`.
+7.  For the destination, check the box for **Send to Log Analytics workspace** and select the workspace you created in step 1.
+8.  Save the diagnostic setting.
+9.  To verify, wait a few minutes, then go to your Log Analytics workspace, click on **Logs**, and run a simple query to see if data is arriving, for example: `AzureMetrics | take 10`
+
+**Success Criterion:** Your Azure AI service is now configured to send all its logs and metrics to a central Log Analytics workspace, enabling robust monitoring, alerting, and troubleshooting.

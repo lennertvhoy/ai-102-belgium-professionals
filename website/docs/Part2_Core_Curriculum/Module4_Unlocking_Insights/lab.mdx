@@ -1,0 +1,57 @@
+---
+sidebar_position: 2
+---
+# Lab 4: Hands-On with Knowledge Mining and Document Intelligence
+
+**Objective:** In this lab, you will use Azure's data extraction and search services to solve two common business problems. You will learn how to automate invoice processing and how to create a search index over a set of documents.
+
+**Prerequisites:**
+- Access to an Azure subscription.
+- An Azure AI Document Intelligence resource and an Azure AI Search resource created in your subscription.
+- An Azure Storage Account (for Task 2).
+
+---
+
+### Task 1: Automated Invoice Processing for a Logistics Firm
+
+**Scenario:** A Belgian logistics firm, inspired by the Volvo case, wants to automate the processing of its invoices. You will use the Azure AI Document Intelligence Studio to test the pre-built model and then see what it takes to train a custom model.
+
+**Instructions:**
+
+**Part A: Use the Pre-built Invoice Model**
+1.  Navigate to your Azure AI Document Intelligence resource and open the **Document Intelligence Studio**.
+2.  Under **Prebuilt models**, select the **Invoice** model.
+3.  The studio provides several sample invoices. Select one and click **Analyze**.
+4.  Review the results. Note how the model correctly identifies key fields like `CustomerName`, `InvoiceId`, `InvoiceDate`, and the `Items` table with descriptions and amounts.
+5.  Check the **JSON** tab to see the structured output that would be sent from the API.
+
+**Part B: Train a Custom Extraction Model**
+1.  Under **Custom models**, select **Custom extraction model**.
+2.  Create a new project. You will be prompted to connect it to an Azure Storage container where your training documents will be stored.
+3.  For this exercise, you don't need to upload your own documents. The goal is to understand the process. Explore the labeling interface of the studio.
+4.  Imagine the pre-built model failed to extract a special "Logistics Priority Code" from your invoices. In this interface, you would upload 5-10 sample invoices and "label" or highlight the priority code field on each one.
+5.  Once labeling is complete, you would click **Train** to create a custom model that is now able to recognize and extract that specific field in addition to the standard ones.
+
+> [Asset Suggestion: A screenshot of the Document Intelligence Studio's labeling interface, showing a custom field named "LogisticsPriorityCode" being highlighted on a sample document.]
+
+**Success Criterion:** You have used the pre-built invoice model and can describe the process required to train a custom model for fields not covered by the pre-built version.
+
+---
+
+### Task 2: Create a Searchable Knowledge Base for a Research Institute
+
+**Scenario:** A Belgian life sciences research institute, like UCB, needs to create a search engine for its library of thousands of published research papers (stored as PDFs).
+
+**Instructions:**
+1.  First, go to your Azure Storage Account. Create a Blob container and upload a few sample PDF or text files. These will be your data source. (You can use any text-rich files for this lab).
+2.  Navigate to your **Azure AI Search** resource in the Azure portal.
+3.  Click on the **Import data** wizard to get started.
+4.  **Connect to your data:** Choose **Azure Blob Storage** and select the storage account and container you created in step 1.
+5.  **Add cognitive skills (Enrichment):** This is an optional but powerful step. For this lab, you can skip it, but this is where you would add skills to extract text from images (OCR) or analyze text.
+6.  **Customize target index:** This is where you define the schema of your search index. The wizard will suggest a schema based on your data. You can customize it here (e.g., mark which fields are searchable, filterable, sortable).
+7.  **Create an indexer:** An indexer is a crawler that runs on a schedule to keep your index up-to-date. Give it a name and set it to run once.
+8.  After the wizard completes and the indexing is finished, open the **Search explorer**.
+9.  Try running some keyword queries for terms you know are in your sample documents. The search explorer will show you the raw JSON results.
+10. **Challenge:** Try enabling **Semantic Search** in the search explorer (if your service tier supports it) and see how the results change for a more conceptual query.
+
+**Success Criterion:** You have successfully created a search index from a set of documents in Blob Storage and have used the Search explorer to query it.

@@ -1,0 +1,54 @@
+---
+sidebar_position: 1
+---
+# Module 1.5: Responsible and Compliant AI in the EU
+
+**Module Description:** For any AI professional in Belgium, understanding European regulations is not an optional extra—it is a core engineering requirement. This module moves beyond abstract ethical principles to provide a practical overview of the legally binding frameworks that govern AI in the EU: the General Data Protection Regulation (GDPR) and the landmark EU AI Act. You will learn to treat compliance as a design parameter, ensuring the solutions you build are not only powerful but also lawful, trustworthy, and ready for the European market.
+
+**Learning Objectives:**
+- Understand the risk-based approach of the EU AI Act and be able to assess the likely classification of an AI system.
+- Identify the key engineering and documentation obligations for "high-risk" AI systems as defined by the EU AI Act.
+- Analyze the intersection of AI and GDPR, particularly concerning automated decision-making and data subject rights.
+- Translate legal requirements into concrete design choices and technical measures in an AI solution.
+
+**Key Topics Covered (AI-102 Alignment):**
+- This module provides critical context for the "Implement Responsible AI Practices" domain, grounding it in the specific legal realities of the EU.
+
+---
+
+### 1.1 Beyond Ethics: AI as a Regulated Discipline in Europe
+
+While Microsoft provides a framework for Responsible AI (Fairness, Reliability, Privacy, Inclusiveness, Transparency, Accountability), in the European Union, these principles have been codified into law. Failure to comply with these laws can result in severe penalties, making this knowledge indispensable for professional practice.
+
+- **GDPR (General Data Protection Regulation):** Governs the processing of all personal data. Since most AI models are trained on data, GDPR compliance is fundamental.
+- **The EU AI Act:** The world's first comprehensive AI law. It regulates the development and deployment of AI systems based on the level of risk they pose to society.
+
+### 1.2 The EU AI Act: A Risk-Based Framework for Engineers
+
+The AI Act is not a blanket ban on technology. It is an engineering-focused regulation that classifies AI systems into four risk tiers. Your primary job as an engineer is to know which tier your system falls into, as this dictates your legal obligations.
+
+- **Unacceptable Risk:** Systems that are explicitly banned (e.g., social scoring by governments).
+- **High-Risk:** Systems used in sensitive domains like employment, finance, and law enforcement. These are permitted but are subject to strict compliance obligations.
+- **Limited Risk:** Systems with transparency obligations (e.g., chatbots must disclose they are AI).
+- **Minimal Risk:** The vast majority of AI systems (e.g., spam filters, recommendation engines).
+
+> [Asset Suggestion: A pyramid diagram visually representing the four risk tiers of the EU AI Act, from "Unacceptable" at the top to "Minimal" at the base.]
+
+**Engineering Obligations for High-Risk Systems:**
+If you are building a high-risk system, such as the **Belfius fraud detector** capstone project, the AI Act mandates that you implement and document the following:
+- **Data Governance:** Ensure training data is relevant, representative, and handled correctly.
+- **Technical Documentation:** Maintain detailed documentation for authorities to audit.
+- **Logging and Traceability:** Your system must log events to ensure its outputs can be traced.
+- **Transparency and Provision of Information:** Users must be informed about how the system works.
+- **Human Oversight:** The system must be designed to allow for effective human intervention.
+- **Accuracy, Robustness, and Cybersecurity:** The system must be resilient to errors and attacks.
+
+### 1.3 GDPR and AI: Automated Decisions and the Right to Explanation
+
+GDPR has specific rules for AI systems that make decisions about people. Article 22 of GDPR gives individuals the right not to be subject to a decision based *solely* on automated processing which produces legal or similarly significant effects. 
+
+For an AI Engineer, this means:
+- **Human-in-the-Loop:** Your system design for a high-stakes decision (e.g., a loan application) must include a human review process. A fully autonomous decision may be illegal.
+- **The "Right to Explanation":** While not explicitly a "right to an explanation" of the algorithm itself, data subjects have the right to "meaningful information about the logic involved." This means you must be able to explain the factors that led to a particular automated decision, reinforcing the need for model transparency and interpretability.
+
+Treating these regulations as a checklist during your design phase will not only ensure you are compliant but will also lead to better, safer, and more trustworthy AI products.

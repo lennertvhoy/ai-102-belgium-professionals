@@ -1,0 +1,51 @@
+---
+sidebar_position: 1
+---
+# Module 2: Intelligent Vision Systems: From Image Analysis to Automated Inspection
+
+**Module Description:** This module provides hands-on expertise in building computer vision solutions using Azure AI. You will learn to differentiate between and implement various vision tasks, from using pre-built models for rapid analysis to training custom models for specialized recognition. This skill set is critical for enhancing quality control, automating monitoring, and creating innovative solutions for Belgium's strong industrial, logistics, and manufacturing sectors.
+
+**Learning Objectives:**
+- Differentiate between core computer vision tasks: classification, object detection, OCR, and face analysis.
+- Use the Azure AI Vision service to analyze images, including using the **Read API** for advanced Optical Character Recognition (OCR).
+- Train, evaluate, and deploy both custom image classification and object detection models using the Azure AI Custom Vision service.
+- Use Azure Video Indexer to extract rich insights from video content.
+
+**Key Topics Covered (AI-102 Alignment):**
+- **Analyze images:** Using pre-built models for tags, captions, and dense captions.
+- **Implement Optical Character Recognition (OCR):** Using the Azure AI Vision service's Read API.
+- **Implement face detection and analysis:** Using the Azure AI Vision service.
+- **Train custom models:** Building both image classification and object detection models with Azure AI Custom Vision.
+- **Analyze video content:** Using Azure Video Indexer.
+
+---
+
+### 2.1 The Spectrum of Computer Vision Tasks
+
+Computer vision is not a single capability but a range of distinct tasks. As an AI Engineer, you must select the right tool for the job.
+
+- **Image Classification:** Answers "What is in this image?" (e.g., "This is a picture of a wind turbine blade."). The entire image gets a single tag.
+- **Object Detection:** Answers "What objects are in this image, and where are they?" It identifies multiple objects and provides bounding box coordinates for each (e.g., "There is a *micro-fracture* at coordinates [x1, y1, x2, y2].").
+- **Optical Character Recognition (OCR):** Extracts printed or handwritten text from images, such as reading serial numbers from equipment.
+- **Face Analysis:** Detects human faces and can optionally analyze attributes like age or emotion, or perform facial recognition.
+
+> [Asset Suggestion: A visual comparison chart with four quadrants, each showing an image and the output for Classification, Object Detection, OCR, and Face Detection to clarify the differences.]
+
+### 2.2 Using Pre-Built Models: The Azure AI Vision Service
+
+For many common tasks, Azure provides powerful pre-trained models that can be used immediately via an API call. This is the fastest way to add vision capabilities to an application.
+
+- **The Read API:** The state-of-the-art OCR engine in Azure. It can extract text from complex documents, including mixed languages and noisy backgrounds, making it ideal for tasks like processing invoices or reading vehicle identification numbers (VINs) in a logistics context at the Port of Antwerp-Bruges.
+- **Face Analysis:** The Vision service can detect faces, return their locations, and analyze attributes. This can be used for applications like estimating audience demographics in a retail setting.
+
+### 2.3 Training Custom Models: Azure AI Custom Vision
+
+When pre-built models are not enough, you need to train your own. The Azure AI Custom Vision service provides a user-friendly interface and API to build models for domain-specific tasks, like the Siemens Gamesa project that trained a model to spot unique defects in wind turbine blades.
+
+- **Custom Classification vs. Object Detection:** You will learn the practical difference between training a classifier (e.g., identifying different types of Belgian chocolates) and an object detector (e.g., finding and counting individual pralines in a box).
+
+### 2.4 Analyzing Video: Azure Video Indexer
+
+A significant amount of data is stored in video format. Azure Video Indexer is a comprehensive service that automatically extracts a wide array of insights from video and audio files.
+
+- **Key Capabilities:** Automatically generates transcripts, identifies speakers, detects objects and scenes, translates content, and creates a searchable index of the video's content. This is invaluable for media companies, corporate training, or analyzing surveillance footage.

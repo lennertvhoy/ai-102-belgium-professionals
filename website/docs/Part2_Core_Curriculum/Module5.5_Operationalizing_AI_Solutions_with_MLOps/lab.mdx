@@ -1,0 +1,104 @@
+---
+sidebar_position: 2
+---
+# Lab 5.5: Hands-On with MLOps
+
+**Objective:** This lab provides a practical introduction to the MLOps workflow using Azure Machine Learning. You will learn how to take a trained model, register it in a central repository, and deploy it as a live, testable API endpoint.
+
+**Prerequisites:**
+- Access to an Azure subscription.
+- An Azure Machine Learning workspace created in your subscription.
+- For Part 3, you will need a GitHub account.
+
+---
+
+### Task 1: Register a Model in Azure Machine Learning
+
+**Scenario:** You are an AI Engineer who has just finished training a machine learning model on your local machine. The model is saved as a `model.pkl` file. Your next step is to place this model into a centralized, version-controlled registry so the rest of the team knows it is the official version.
+
+**Instructions:**
+1.  Navigate to your **Azure Machine Learning workspace** in the Azure portal and launch the **Azure ML Studio**.
+2.  In the left-hand navigation, under **Assets**, select **Models**.
+3.  Click **+ Register** to open the model registration dialog.
+4.  **For this lab, you can use a sample model.** Instead of uploading your own, select the **From Azure ML assets** option.
+    -   Select a sample model from the list, such as `credit-risk-model`.
+    -   Give it a name like `my-first-registered-model`.
+5.  Click **Register**. 
+6.  You will now see your model in the registry with a **Version** number of 1. If you were to register another model with the same name, it would automatically be assigned Version 2. This is the foundation of model versioning.
+
+> [Asset Suggestion: A screenshot of the Azure ML Studio showing the Models registry with `my-first-registered-model` listed with its version number.]
+
+**Success Criterion:** You have successfully registered a model in the Azure Machine Learning model registry.
+
+---
+
+### Task 2: Deploy the Model to a Managed Endpoint
+
+**Scenario:** Now that your model is registered, you need to deploy it as a secure and scalable API that other applications can use to get predictions.
+
+**Instructions:**
+1.  From the **Models** page, select your registered model.
+2.  Click the **Deploy** button and choose **Deploy to real-time endpoint**.
+3.  **Endpoint name:** Give your endpoint a globally unique name, e.g., `credit-scoring-api-<your-initials>`.
+4.  **Compute type:** Select **Managed**.
+5.  **Authentication type:** Select **Key-based authentication**.
+6.  The sample model you selected comes with a pre-configured scoring script (`score.py`) and environment, so you can proceed directly to click **Deploy**. (Note: For a custom model, you would need to provide these files).
+7.  Deployment will take several minutes. Once it is complete, navigate to the **Endpoints** section in the studio.
+8.  Select your new endpoint and go to the **Test** tab. Here you can enter sample data in JSON format to test your live API endpoint.
+
+**Success Criterion:** You have deployed a model from the registry to a real-time, managed online endpoint and have tested it in the studio.
+
+---
+
+### Task 3: Understanding a CI/CD Pipeline for MLOps (Conceptual)
+
+**Scenario:** Manually registering and deploying models is good for learning, but in production, this process should be automated. This task explains how a CI/CD pipeline using GitHub Actions would work.
+
+**Instructions:**
+This is a conceptual exercise. Review the following sample GitHub Actions workflow. It shows how you can automate the process from Tasks 1 and 2.
+
+```yaml
+# .github/workflows/train-and-deploy.yml
+name: Train and Deploy AI Model
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  train-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v3
+
+    - name: Connect to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Install Azure ML CLI
+      run: az extension add -n ml
+
+    - name: Run model training script
+      run: python src/train.py # This script saves a model file
+
+    - name: Register model in Azure ML
+      run: |
+        az ml model create --name my-production-model --path outputs/model.pkl --workspace-name my-ml-workspace
+
+    - name: Deploy model to production endpoint
+      run: |
+        az ml online-endpoint update --name my-production-endpoint --file src/deployment.yml --workspace-name my-ml-workspace
+```
+
+**Analysis:**
+- **Trigger:** This pipeline runs automatically every time code is pushed to the `main` branch.
+- **Steps:**
+    1.  It connects to Azure using a stored secret.
+    2.  It runs a Python script (`train.py`) that trains a model.
+    3.  It uses the Azure ML CLI to **register** the newly trained model (similar to Task 1).
+    4.  It then uses the CLI to **deploy** that model to a production endpoint (similar to Task 2).
+
+**Success Criterion:** You can explain the purpose of a CI/CD pipeline in MLOps and can identify the steps in the YAML file that correspond to the manual actions you took in Task 1 and Task 2.

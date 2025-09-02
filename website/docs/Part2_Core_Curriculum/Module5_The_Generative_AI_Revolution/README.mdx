@@ -1,0 +1,58 @@
+---
+sidebar_position: 1
+---
+# Module 5: The Generative AI Revolution: Building with Azure OpenAI
+
+**Module Description:** This module provides the technical skills to build solutions with large language models (LLMs) using the enterprise-grade Azure OpenAI Service. You will move beyond basic API calls to learn the engineering techniques required to get reliable, accurate, and context-aware results from models like GPT-4. This includes prompt engineering, connecting models to your own data using the RAG pattern, and understanding the concepts of fine-tuning and agentic design.
+
+**Learning Objectives:**
+- Use the Azure OpenAI Studio to deploy and test generative models for text and code generation.
+- Apply advanced prompt engineering techniques to control model output.
+- Understand and describe the Retrieval-Augmented Generation (RAG) architecture for making models answer questions on custom data.
+- Differentiate between prompt engineering, RAG, and fine-tuning as methods for model customization.
+- Understand the basic principles of an AI agent that can use tools.
+
+**Key Topics Covered (AI-102 Alignment):**
+- **Use Azure OpenAI Service:** Deploying models, using the completions API.
+- **Implement Prompt Engineering:** Crafting effective prompts with context, few-shot examples.
+- **Use your data with Azure OpenAI:** Understanding the RAG pattern with Azure AI Search.
+- **Fine-tune an Azure OpenAI model:** Understanding the concepts and use cases for fine-tuning.
+- **Implement an Agentic Solution:** Understanding how agents like Semantic Kernel work.
+
+---
+
+### 5.1 Prompt Engineering: The Art and Science of Instruction
+
+The quality of your output is determined by the quality of your input. Prompt engineering is the practice of carefully crafting instructions to get the best possible response from an LLM.
+
+- **Provide Context and Role-Play:** Tell the model who it is and what context it should operate in. (e.g., "You are a helpful assistant for a Belgian railway company.")
+- **Few-Shot Prompting:** Provide several examples of the input and desired output in your prompt. This helps the model understand the pattern you want it to follow.
+- **Chain-of-Thought (CoT):** For complex reasoning tasks, ask the model to "think step-by-step." This forces it to break down the problem and often leads to more accurate results.
+
+### 5.2 Using Your Data: Retrieval-Augmented Generation (RAG)
+
+By default, models like GPT-4 only know about the public data they were trained on. The most common and effective way to make them answer questions about your private, custom data (e.g., your company's internal documents) is the RAG pattern.
+
+**How RAG Works:**
+1.  A user asks a question (e.g., "What is our company's policy on parental leave?").
+2.  The query is first sent to a traditional search service (like **Azure AI Search** from Module 4) that has indexed your internal documents.
+3.  The search service retrieves the most relevant document snippets.
+4.  These snippets are injected into the prompt as context for the LLM.
+5.  The final prompt to the LLM looks like this: `"Using the following context, answer the user's question. Context: [Retrieved document snippets about parental leave]. Question: What is our company's policy on parental leave?"`
+
+This approach is powerful because it combines the reasoning ability of the LLM with the factual, up-to-date knowledge from your own data source.
+
+> [Asset Suggestion: A clear architectural diagram illustrating the RAG pattern: User Query -> Azure AI Search -> Relevant Documents -> Prompt Injection -> Azure OpenAI -> Final Answer.]
+
+### 5.3 Customizing Models: Fine-Tuning
+
+Fine-tuning is the process of further training a base model on a large dataset of your own examples. This is more complex and costly than RAG and is only needed for specific use cases.
+
+- **When to use Fine-Tuning:** Use it when you need to teach the model a new *skill* or *style* that is hard to replicate via prompting, not to teach it new facts. For example, you might fine-tune a model to always respond in a specific legal jargon or to generate code in a proprietary programming language.
+- **RAG vs. Fine-Tuning:** For most knowledge-based tasks, RAG is the preferred, more efficient solution.
+
+### 5.4 The Future: Agentic Solutions
+
+The Flemish government's adoption of Copilot is just the beginning. The next step is building custom AI agents that can not only answer questions but also take actions by using tools.
+
+- **How Agents Work:** An agent is an LLM-powered loop that can reason, plan, and use a predefined set of "tools" (which are just functions or APIs). For example, you could give an agent a "GetWeather" tool. When a user asks, "What's the weather in Brussels?", the agent recognizes the intent, calls the `GetWeather(city="Brussels")` function, gets the result, and then generates a natural language response based on that result. Frameworks like **Semantic Kernel** help you build these agents.
